@@ -22,6 +22,10 @@ const userSchema = new Schema({
     timeSubmitted: {
         type: Date,
         required: true
+    },
+    hasSubmitted: {
+        type: Boolean,
+        default: false
     }
 });
 
