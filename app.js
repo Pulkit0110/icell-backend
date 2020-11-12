@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const aboutUsRoute = require('./routes/aboutUs');
+const campusAuthRoutes = require('./routes/events/campuspreneur/auth');
+const campusRoutes = require('./routes/events/campuspreneur/campusRoutes');
 
 const app = express();
 
@@ -19,6 +21,19 @@ app.use((req, res, next) => {
 });
 
 app.use(aboutUsRoute);
+app.use('events/campuspreneur',campusAuthRoutes);
+app.use('events/campuspreneur',campusRoutes);
+
+app.use((error,req,res,next) => {
+    console.log(error);
+    const statusCode = error.statusCode || 500;
+    const message = error.message;
+    const data = error.data;
+    res.status(statusCode).json({
+        message: message,
+        data: data
+    });
+});
 
 mongoose.connect(
     'mongodb+srv://developers:industrycell@cluster0.9pz2o.mongodb.net/test',
