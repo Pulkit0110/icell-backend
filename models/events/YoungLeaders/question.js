@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const levelSchema = new Schema({
+const questionSchema = new Schema({
     number : {
         type: Number,
         required: true
@@ -15,6 +15,10 @@ const levelSchema = new Schema({
         type: String,
         required: true
     },
+    score: {
+        type:Number,
+        required: true
+    },
 
     // these are not necessary for every question
     statement: String,
@@ -25,4 +29,4 @@ const levelSchema = new Schema({
     imageUrl: String
 });
 
-module.exports = mongoose.model('QuestionYoungleaders', levelSchema);
+module.exports = mongoose.model('QuestionYoungleaders', questionSchema);
