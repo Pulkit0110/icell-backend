@@ -8,4 +8,6 @@ router.get('/',isauth, campusController.getIndex);
 
 router.get('/leaderboard',isauth,campusController.getLeaderboard);
 
+router.post('/checkAnswer',isauth,campusController.checkAnswer);
+
 module.exports = router;
