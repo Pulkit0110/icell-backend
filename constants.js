@@ -1,2 +1,2 @@
-export const USER_TABLE = "userTable";
-export const QUESTION_TABLE = "questionTable";
+exports.USER_TABLE = "userTable";
+exports.QUESTION_TABLE = "questionTable";

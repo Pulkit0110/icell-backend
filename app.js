@@ -5,10 +5,14 @@ const mongoose = require("mongoose");
 const aboutUsRoute = require("./routes/aboutUs");
 const campusAuthRoutes = require("./routes/events/campuspreneur/auth");
 const campusRoutes = require("./routes/events/campuspreneur/campusRoutes");
+const activeEventsRoutes=require('./routes/events/activeEvents');
+const eventInfoRoutes=require('./routes/events/eventinfo');
+
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -26,6 +30,8 @@ app.use((req, res, next) => {
 app.use(aboutUsRoute);
 app.use("events/campuspreneur", campusAuthRoutes);
 app.use("events/campuspreneur", campusRoutes);
+app.use(activeEventsRoutes);
+app.use(eventInfoRoutes)
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -45,5 +51,6 @@ mongoose
   )
   .then(result => {
     app.listen(4000);
+    console.log('server started')
   })
   .catch(err => console.log(err));
