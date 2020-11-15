@@ -4,7 +4,7 @@ const {body} = require('express-validator/check');
 const User = require('../../../models/events/YoungLeaders/user');
 const authController = require('../../../controllers/events/YoungLeaders/auth');
 const mainController = require('../../../controllers/events/YoungLeaders/mainController');
-const isauth = require('../../../middleware/is-auth');
+const isauth = require('../../../middleware/young-is-auth');
 
 const router = express.Router();
 
