@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const youngleadersController = require('../../controllers/admin/youngLeaders');
-const isauth = require('../../middleware/is-auth');
+const isauth = require('../../middleware/young-is-auth');
 
 const multer = require('multer');
 const fileStorage = multer.diskStorage({
