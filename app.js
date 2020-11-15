@@ -8,6 +8,11 @@ const campusRoutes = require("./routes/events/campuspreneur/campusRoutes");
 const activeEventsRoutes=require('./routes/events/activeEvents');
 const eventInfoRoutes=require('./routes/events/eventinfo');
 
+const youngLeadersRoutes = require('./routes/events/YoungLeaders/routes');
+
+const youngleaderadminRoutes = require('./routes/admin/youngLeaders');
+
+const sponsorAdminRoutes = require('./routes/admin/sponsors');
 
 const app = express();
 
@@ -31,7 +36,12 @@ app.use(aboutUsRoute);
 app.use("events/campuspreneur", campusAuthRoutes);
 app.use("events/campuspreneur", campusRoutes);
 app.use(activeEventsRoutes);
-app.use(eventInfoRoutes)
+app.use(eventInfoRoutes);
+
+app.use('/events/youngleaders',youngLeadersRoutes);
+
+app.use('/admin-control/youngleader',youngleaderadminRoutes);
+app.use('/admin-control',sponsorAdminRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
