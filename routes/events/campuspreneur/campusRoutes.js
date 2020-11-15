@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const campusController = require('../../../controllers/events/campuspreneur/campusController');
-const isauth = require('../../../middleware/is-auth');
+const isauth = require('../../../middleware/campus-is-auth');
 
 router.get('/',isauth, campusController.getIndex);
 
