@@ -27,6 +27,16 @@ const eventInfoSchema = new Schema({
         type: Date,
         required: true,
     },
+    imageUrl: {
+        type: String,
+        required: true
+    },
+    rules: {
+        type: Array,
+    },
+    faqs: {
+        type: Array,
+    }
 });
 
 module.exports = mongoose.model("EventInfo", eventInfoSchema);
