@@ -31,11 +31,18 @@ const eventInfoSchema = new Schema({
         type: String,
         required: true
     },
+    faqs: [
+        {
+            question: {
+                type: String
+            },
+            answer: {
+                type: String
+            }
+        }
+    ],
     rules: {
-        type: Array,
-    },
-    faqs: {
-        type: Array,
+        type: Array
     }
 });
 
