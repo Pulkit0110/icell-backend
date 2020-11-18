@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -6,24 +6,25 @@ const mongoose = require("mongoose");
 const aboutUsRoute = require("./routes/aboutUs");
 const campusAuthRoutes = require("./routes/events/campuspreneur/auth");
 const campusRoutes = require("./routes/events/campuspreneur/campusRoutes");
-const activeEventsRoutes=require('./routes/events/activeEvents');
-const eventInfoRoutes=require('./routes/events/eventinfo');
+const activeEventsRoutes = require("./routes/events/activeEvents");
+const eventInfoRoutes = require("./routes/events/eventinfo");
+const teamsRoutes = require("./routes/teams");
 
-const youngLeadersRoutes = require('./routes/events/YoungLeaders/routes');
+const youngLeadersRoutes = require("./routes/events/YoungLeaders/routes");
 
-const youngleaderadminRoutes = require('./routes/admin/youngLeaders');
+const youngleaderadminRoutes = require("./routes/admin/youngLeaders");
 
-const sponsorAdminRoutes = require('./routes/admin/sponsors');
+const sponsorAdminRoutes = require("./routes/admin/sponsors");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -40,11 +41,12 @@ app.use("events/campuspreneur", campusAuthRoutes);
 app.use("events/campuspreneur", campusRoutes);
 app.use(activeEventsRoutes);
 app.use(eventInfoRoutes);
+app.use(teamsRoutes);
 
-app.use('/events/youngleaders',youngLeadersRoutes);
+app.use("/events/youngleaders", youngLeadersRoutes);
 
-app.use('/admin-control/youngleader',youngleaderadminRoutes);
-app.use('/admin-control',sponsorAdminRoutes);
+app.use("/admin-control/youngleader", youngleaderadminRoutes);
+app.use("/admin-control", sponsorAdminRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -64,6 +66,6 @@ mongoose
   )
   .then(result => {
     app.listen(4000);
-    console.log('server started')
+    console.log("server started");
   })
   .catch(err => console.log(err));
