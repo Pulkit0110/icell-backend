@@ -43,6 +43,12 @@ const eventInfoSchema = new Schema({
     ],
     rules: {
         type: Array
+    },
+    stages: {
+        type: Array,
+    },
+    formLink: {
+        type: String
     }
 });
 
