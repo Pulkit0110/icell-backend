@@ -20,6 +20,9 @@ exports.addEventDescription = async (req, res) => {
     const info = req.body.info;
     const startTime = req.body.startTime;
     const endTime = req.body.endTime;
+    const imageUrl = req.body.imageUrl;
+    const rules = req.body.rules;
+    const faqs = req.body.faqs;
 
     await EventInfoModel.create({
         name: eventName,
@@ -28,6 +31,9 @@ exports.addEventDescription = async (req, res) => {
         info: info,
         startTime: startTime,
         endTime: endTime,
+        imageUrl: imageUrl,
+        rules: rules,
+        faqs: faqs,
     });
 
     return res.json({
