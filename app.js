@@ -30,6 +30,10 @@ app.set("views", "views");
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Icell Backend");
+});
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
