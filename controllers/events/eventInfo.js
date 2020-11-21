@@ -7,7 +7,7 @@ exports.getEventDescription = async (req, res) => {
     name: eventName
   });
 
-  if (eventInfo == null) {
+  if (eventInfo == null || eventInfo.length == 0) {
     res.json({
       success: false,
       message: "Event not found",
